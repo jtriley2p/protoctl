@@ -110,7 +110,7 @@ classDiagram
         setBeacon(address)
     }
 
-    class ProxyController {
+    class ProtocolController {
         deployments
         queue(bytes)
         cancel()
@@ -122,7 +122,7 @@ classDiagram
 
     Adminstrated <|-- Beacon
     Adminstrated <|-- TimelockAdministrated
-    TimelockAdministrated <|-- ProxyController
+    TimelockAdministrated <|-- ProtocolController
 ```
 
 ## TODO
