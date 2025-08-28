@@ -2,7 +2,7 @@
 pragma solidity 0.8.30;
 
 import { TimelockAdministrated } from "src/Auth/TimelockAdministrated.sol";
-import { ProtocolControllerVM } from "src/VM.sol";
+import { ProtocolControllerVM } from "src/Lib/VM.sol";
 
 // Deployment status
 enum Status {
