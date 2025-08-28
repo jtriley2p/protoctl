@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { Administrated } from "src/Auth/Administrated.sol";
+import {Administrated} from "src/Auth/Administrated.sol";
 
 /// @title Beacon Example
 /// @author jtriley2p
@@ -16,9 +16,7 @@ contract Beacon is Administrated {
 
     /// @notice Sets the new implementation address.
     /// @param newImplementation New implementation address.
-    function setImplementation(
-        address newImplementation
-    ) public {
+    function setImplementation(address newImplementation) public {
         require(msg.sender == admin);
 
         implementation = newImplementation;

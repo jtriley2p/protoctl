@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { TimelockAdministrated } from "src/Auth/TimelockAdministrated.sol";
-import { ProtocolControllerVM } from "src/Lib/VM.sol";
+import {TimelockAdministrated} from "src/Auth/TimelockAdministrated.sol";
+import {ProtocolControllerVM} from "src/Lib/VM.sol";
 
 // Deployment status
 enum Status {
@@ -37,9 +37,7 @@ contract ProtocolController is TimelockAdministrated {
 
     /// @notice Queues a new deployment.
     /// @param bytecode Bytecode for the VM to execute when timelock is ready.
-    function queue(
-        bytes calldata bytecode
-    ) public {
+    function queue(bytes calldata bytecode) public {
         uint256 index = deployments.length - 1;
 
         require(msg.sender == admin);

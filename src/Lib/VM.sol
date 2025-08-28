@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { Proxy1967 } from "src/Proxy/Proxy1967.sol";
-import { BeaconProxy1967 } from "src/Proxy/BeaconProxy1967.sol";
+import {Proxy1967} from "src/Proxy/Proxy1967.sol";
+import {BeaconProxy1967} from "src/Proxy/BeaconProxy1967.sol";
 
 uint256 constant setImplementationSelector = 0xd784d42600000000000000000000000000000000000000000000000000000000;
 uint256 constant setBeaconSelector = 0xd42afb5600000000000000000000000000000000000000000000000000000000;
@@ -63,7 +63,7 @@ function createProxy(Ptr ptr) returns (Ptr newPtr) {
         newPtr := add(0x20, ptr)
     }
 
-    new Proxy1967{salt:salt}();
+    new Proxy1967{salt: salt}();
 }
 
 function createBeaconProxy(Ptr ptr) returns (Ptr newPtr) {
@@ -75,7 +75,7 @@ function createBeaconProxy(Ptr ptr) returns (Ptr newPtr) {
         newPtr := add(0x20, ptr)
     }
 
-    new BeaconProxy1967{salt:salt}();
+    new BeaconProxy1967{salt: salt}();
 }
 
 function setImplementation(Ptr ptr) returns (Ptr newPtr) {
@@ -89,14 +89,12 @@ function setImplementation(Ptr ptr) returns (Ptr newPtr) {
         newPtr := add(0x14, ptr)
 
         mstore(0x00, setImplementationSelector)
-        
+
         mstore(0x04, implementation)
 
         let ok := call(gas(), proxy, 0x00, 0x00, 0x24, 0x00, 0x00)
 
-        if iszero(ok) {
-            revert(0x00, 0x00)
-        }
+        if iszero(ok) { revert(0x00, 0x00) }
     }
 }
 
@@ -111,14 +109,12 @@ function setBeacon(Ptr ptr) returns (Ptr newPtr) {
         newPtr := add(0x14, ptr)
 
         mstore(0x00, setBeaconSelector)
-        
+
         mstore(0x04, beacon)
 
         let ok := call(gas(), proxy, 0x00, 0x00, 0x24, 0x00, 0x00)
 
-        if iszero(ok) {
-            revert(0x00, 0x00)
-        }
+        if iszero(ok) { revert(0x00, 0x00) }
     }
 }
 
@@ -133,14 +129,12 @@ function sendAdmin(Ptr ptr) returns (Ptr newPtr) {
         newPtr := add(0x14, ptr)
 
         mstore(0x00, sendAdminSelector)
-        
+
         mstore(0x04, admin)
 
         let ok := call(gas(), proxy, 0x00, 0x00, 0x24, 0x00, 0x00)
 
-        if iszero(ok) {
-            revert(0x00, 0x00)
-        }
+        if iszero(ok) { revert(0x00, 0x00) }
     }
 }
 
@@ -154,9 +148,7 @@ function receiveAdmin(Ptr ptr) returns (Ptr newPtr) {
 
         let ok := call(gas(), proxy, 0x00, 0x00, 0x04, 0x00, 0x00)
 
-        if iszero(ok) {
-            revert(0x00, 0x00)
-        }
+        if iszero(ok) { revert(0x00, 0x00) }
     }
 }
 
@@ -178,9 +170,7 @@ function runCall(Ptr ptr) returns (Ptr newPtr) {
 
         newPtr := add(ptr, len)
 
-        if iszero(ok) {
-            revert(0x00, 0x00)
-        }
+        if iszero(ok) { revert(0x00, 0x00) }
     }
 }
 
@@ -202,9 +192,7 @@ function runCreate2(Ptr ptr) returns (Ptr newPtr) {
 
         newPtr := add(ptr, len)
 
-        if iszero(addr) {
-            revert(0x00, 0x00)
-        }
+        if iszero(addr) { revert(0x00, 0x00) }
     }
 }
 

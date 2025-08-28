@@ -2,8 +2,7 @@
 pragma solidity 0.8.30;
 
 bytes32 constant adminSlot = 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103;
-bytes32 constant pendingAdminSlot =
-    0x8b2bdfe1250d0e6b0c2034608336566041b2cfc76c628c23f12b93744b938494;
+bytes32 constant pendingAdminSlot = 0x8b2bdfe1250d0e6b0c2034608336566041b2cfc76c628c23f12b93744b938494;
 
 /// @title Administrated ERC1967 Contract
 /// @author jtriley2p
@@ -37,9 +36,7 @@ abstract contract Administrated1967 {
 
     /// @notice Sends admin authority.
     /// @param newAdmin New admin address.
-    function sendAdmin(
-        address newAdmin
-    ) public {
+    function sendAdmin(address newAdmin) public {
         require(msg.sender == admin());
 
         assembly {

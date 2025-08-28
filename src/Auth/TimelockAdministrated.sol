@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { Administrated } from "src/Auth/Administrated.sol";
+import {Administrated} from "src/Auth/Administrated.sol";
 
 /// @title Administrated Timelock
 /// @author jtriley2p

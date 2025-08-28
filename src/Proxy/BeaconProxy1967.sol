@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { Administrated1967, adminSlot } from "src/Auth/Administrated1967.sol";
+import {Administrated1967, adminSlot} from "src/Auth/Administrated1967.sol";
 
 bytes32 constant beaconSlot = 0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50;
 
@@ -33,9 +33,7 @@ contract BeaconProxy1967 is Administrated1967 {
     /// @notice Sets beacon contract address.
     /// @param newBeacon New beacon contract address.
     /// @dev Note that this changes the beacon itself changes, not the address it returns.
-    function setBeacon(
-        address newBeacon
-    ) public {
+    function setBeacon(address newBeacon) public {
         require(msg.sender == admin());
 
         assembly {

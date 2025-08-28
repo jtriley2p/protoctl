@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity 0.8.30;
 
-import { Administrated1967, adminSlot } from "src/Auth/Administrated1967.sol";
+import {Administrated1967, adminSlot} from "src/Auth/Administrated1967.sol";
 
 bytes32 constant implSlot = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
 
@@ -33,9 +33,7 @@ contract Proxy1967 is Administrated1967 {
 
     /// @notice Sets the implementation contract address.
     /// @param newImplementation New implementation contract address.
-    function setImplementation(
-        address newImplementation
-    ) public {
+    function setImplementation(address newImplementation) public {
         require(msg.sender == admin());
 
         assembly {
@@ -53,9 +51,7 @@ contract Proxy1967 is Administrated1967 {
 
             returndatacopy(0x00, 0x00, returndatasize())
 
-            if ok {
-                return(0x00, returndatasize())
-            }
+            if ok { return(0x00, returndatasize()) }
 
             revert(0x00, returndatasize())
         }
@@ -69,9 +65,7 @@ contract Proxy1967 is Administrated1967 {
 
             returndatacopy(0x00, 0x00, returndatasize())
 
-            if ok {
-                return(0x00, returndatasize())
-            }
+            if ok { return(0x00, returndatasize()) }
 
             revert(0x00, returndatasize())
         }
