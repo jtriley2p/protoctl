@@ -30,6 +30,7 @@ contract TimelockAdministrated is Administrated {
     /// @param newTimelock New timelock after update finalizeds.
     function queueTimelockUpdate(uint64 newTimelock) public {
         require(msg.sender == admin);
+        require(!inLockdown());
 
         nextTimelock = newTimelock;
         timelockUpdateReadyAt = uint64(timelock + block.timestamp);
@@ -41,6 +42,7 @@ contract TimelockAdministrated is Administrated {
     /// @dev Throws if timelock update is not ready.
     function finalizeTimelockUpdate() public {
         require(msg.sender == admin);
+        require(!inLockdown());
         require(block.timestamp >= timelockUpdateReadyAt);
 
         timelock = nextTimelock;

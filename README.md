@@ -68,6 +68,17 @@ storage collisions.
 
 ```mermaid
 classDiagram
+    class Lockdown {
+        lockdownAuthority
+        pendingLockdownAuthority
+        lastLockdown
+
+        inLockdown()
+        initiateLockdown()
+        sendLockdownAuthority(address)
+        receiveLockdownAuthority()
+    }
+
     class Adminstrated {
         admin
         pendingAdmin
@@ -120,6 +131,7 @@ classDiagram
     Administrated1967 <|-- Proxy1967
     Administrated1967 <|-- BeaconProxy1967
 
+    Lockdown <|-- Administrated
     Adminstrated <|-- Beacon
     Adminstrated <|-- TimelockAdministrated
     TimelockAdministrated <|-- ProtocolController

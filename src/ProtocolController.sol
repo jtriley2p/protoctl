@@ -41,6 +41,7 @@ contract ProtocolController is TimelockAdministrated {
         uint256 index = deployments.length - 1;
 
         require(msg.sender == admin);
+        require(!inLockdown());
         require(deployments[index].status != Status.Queued);
 
         deployments.push(Deployment(Status.Queued, uint64(block.timestamp + timelock), bytecode));
@@ -54,6 +55,7 @@ contract ProtocolController is TimelockAdministrated {
         Deployment storage deployment = deployments[index];
 
         require(msg.sender == admin);
+        require(!inLockdown());
         require(deployment.status == Status.Queued);
 
         deployment.status = Status.Cancelled;
@@ -67,6 +69,7 @@ contract ProtocolController is TimelockAdministrated {
         Deployment storage deployment = deployments[index];
 
         require(msg.sender == admin);
+        require(!inLockdown());
         require(deployment.status == Status.Queued);
         require(deployment.readyAt <= block.timestamp);
 
