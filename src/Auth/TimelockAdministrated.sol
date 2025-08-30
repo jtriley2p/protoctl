@@ -2,13 +2,15 @@
 pragma solidity 0.8.30;
 
 import {Administrated} from "src/Auth/Administrated.sol";
+import {Lockdown} from "src/Auth/Lockdown.sol";
 
 /// @title Administrated Timelock
 /// @author jtriley2p
 /// @notice Minimal timelock contract with two-step administrator transfers. Updating timelock
 ///         requires two steps; admin queues timelock update then admin completes timelock update
 ///         after the current timelock has passed.
-contract TimelockAdministrated is Administrated {
+/// @notice Inherits `Lockdown` to ensure _all_ admin functions can be locked down.
+contract TimelockAdministrated is Administrated, Lockdown {
     /// @notice Logged when timelock update is queued.
     /// @param newTimelock New timelock after update.
     event QueueTimelockUpdate(uint64 newTimelock);

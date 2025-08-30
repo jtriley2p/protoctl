@@ -3,17 +3,6 @@
 The `protoctl` system enables complex smart contract deployment and upgrades with a publicly visible
 timelock. Queued deployment data is stored for easy access in analyzing and auditing the deployment.
 
-## Threat Modelling
-
-Two authority addresses control the system with different levels of control, Administrator and
-Security Council.
-
-### Administrator
-
-The Administrator 
-
-### Security Council
-
 ## Architecture
 
 We employ a virtual machine whose intructions enshrine create and update operations for ERC-1967
@@ -142,9 +131,9 @@ classDiagram
     Administrated1967 <|-- Proxy1967
     Administrated1967 <|-- BeaconProxy1967
 
-    Lockdown <|-- Administrated
     Administrated <|-- Beacon
-    Administrated <|-- TimelockAdministrated
+    Administrated <|-- Lockdown
+    Lockdown <|-- TimelockAdministrated
     TimelockAdministrated <|-- ProtocolController
 ```
 
